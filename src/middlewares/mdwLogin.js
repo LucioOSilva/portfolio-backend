@@ -18,12 +18,12 @@ const noLoginValidator = (req, _res, next) => {
 
 const noLoginTokenResponse = (req, res, next) => {
   try {
-    const {IPv4, latitude, longitude, country_name } = req.body;
+    const {IPv4, latitude, longitude, countryName } = req.body;
     const objectUser = {
       IPv4,
       latitude,
       longitude,
-      countryName: country_name };
+      countryName };
     const token = loginService.tokenGenerator(objectUser);
     return res.status(status.accepted).json(token);
   } catch (error) {
