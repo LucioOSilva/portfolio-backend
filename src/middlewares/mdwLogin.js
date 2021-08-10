@@ -1,6 +1,9 @@
 const loginService = require('../services/LoginServices');
 const status = require('../services/statusCode');
 
+const handshake = (_req, res, _next) => {
+  return res.status(status.OK).json({ message: 'Im awake!'});
+}
 
 const noLoginValidator = (req, _res, next) => {
   try {
@@ -42,6 +45,7 @@ const loginAuthenticator = (req, _res, next) => {
 
 
 module.exports = {
+  handshake,
   noLoginValidator,
   noLoginTokenResponse,
   loginAuthenticator,
